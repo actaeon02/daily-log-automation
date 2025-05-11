@@ -7,13 +7,13 @@ st.title("📝 Daily Class Log Formatter for WhatsApp")
 
 # Class to time options mapping
 class_time_map = {
-        "SS2": ["TTh 13.30", "Sat 09.15"],
-        "SS3": ["MW 13.30"],
-        "SS4": ["MW 15.10", "TTh 16.40"],
-        "HFD": ["TTh 15.10", "TTh 18.30"],
-        "TB1": ["MW 16.40"],
-        "TB6": ["WF 16.40"]
-    }
+    "SS2": ["TTh 13.30", "Sat 09.15"],
+    "SS3": ["MW 13.30"],
+    "SS4": ["MW 15.10", "TTh 16.40"],
+    "HFD": ["TTh 15.10", "TTh 18.30"],
+    "TB1": ["MW 16.40"],
+    "TB6": ["WF 16.40"]
+}
 
 # Init state
 if "classes" not in st.session_state:
@@ -21,37 +21,36 @@ if "classes" not in st.session_state:
 if "selected_class" not in st.session_state:
     st.session_state.selected_class = "SS2"
 
-# Handle class change
-def on_class_change():
-    st.session_state.selected_class = st.session_state.class_name
-    st.experimental_rerun()
+# Select class (outside the form)
+st.subheader("Select Class")
+st.session_state.selected_class = st.selectbox(
+    "Class Name",
+    options=list(class_time_map.keys()),
+    index=list(class_time_map.keys()).index(st.session_state.selected_class)
+)
+
+filtered_times = class_time_map[st.session_state.selected_class]
 
 # Form
 with st.form("class_form", clear_on_submit=True):
     st.subheader("Add a Class Entry")
 
-    st.selectbox("Class Name", options=list(class_time_map.keys()),
-                 key="class_name", index=list(class_time_map.keys()).index(st.session_state.selected_class),
-                 on_change=on_class_change)
-
-    filtered_times = class_time_map.get(st.session_state.selected_class, [])
     time = st.selectbox("Day/Time", options=filtered_times)
-
     attendance = st.text_input("Attendance (e.g., 9/9)")
     covered = st.text_area("Covered Material")
     extra = st.text_input("Extra Notes (optional)")
 
     submitted = st.form_submit_button("➕ Add Class")
     if submitted:
-        if all([st.session_state.class_name, time, attendance, covered]):
+        if all([st.session_state.selected_class, time, attendance, covered]):
             st.session_state.classes.append({
-                "name": st.session_state.class_name,
+                "name": st.session_state.selected_class,
                 "time": time,
                 "attendance": attendance,
                 "covered": covered,
                 "extra": extra
             })
-            st.success(f"✅ Added class: {st.session_state.class_name}")
+            st.success(f"✅ Added class: {st.session_state.selected_class}")
         else:
             st.error("⚠️ Please fill in all required fields.")
                 
