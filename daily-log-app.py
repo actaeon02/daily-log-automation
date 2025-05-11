@@ -55,7 +55,7 @@ if st.session_state.classes:
             color: white; /* White text */
             padding: 6px 12px; /* Padding */
             font-size: 16px; /* Font size */
-            border: 2px solid #ffffff; /* White border by default */
+            border: 2px solid #142c44; /* Border */
             border-radius: 5px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor on hover */
             text-align: center; /* Center text */
@@ -75,7 +75,7 @@ if st.session_state.classes:
 
         .copy-btn i {{
             margin-right: 10px; /* Space between icon and text */
-            font-size: 18px; /* Icon size */
+            font-size: 16px; /* Icon size */
         }}
     </style>
     
@@ -91,7 +91,7 @@ if st.session_state.classes:
     </script>
     
     <button class="copy-btn" onclick="copyToClipboard()">
-        <i class="fas fa-clipboard"></i>📋 Copy to Clipboard
+        📋 Copy to Clipboard
     </button>
     """
 
