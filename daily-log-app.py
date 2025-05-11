@@ -99,7 +99,7 @@ if st.session_state.classes:
     """
 
     # Render the HTML and JavaScript code using Streamlit's custom component
-    components.html(copy_code, height=35)
+    components.html(copy_code, height=40)
 
     st.info("Tap the button above to copy the log.")
 
