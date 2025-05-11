@@ -31,7 +31,7 @@ with st.form("class_form", clear_on_submit=True):
     filtered_times = class_time_map.get(name, [])
 
     # Let user pick time from filtered list
-    time = st.selectbox("Day/Time", options=filtered_times, key="time_select")
+    time = st.selectbox("Day/Time", options=filtered_times, key=f"time_select_{name}")
 
     attendance = st.text_input("Attendance (e.g., 9/9)")
     covered = st.text_area("Covered Material")
