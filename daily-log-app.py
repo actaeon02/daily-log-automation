@@ -53,22 +53,24 @@ if st.session_state.classes:
         .copy-btn {{
             background-color: #131720; /* Dark Background */
             color: white; /* White text */
-            padding: 4px 4px; /* Padding */
+            padding: 6px 12px; /* Padding */
             font-size: 16px; /* Font size */
-            border: 2px solid; /* Border */
+            border: 2px solid #ffffff; /* White border by default */
             border-radius: 5px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor on hover */
             text-align: center; /* Center text */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-            transition: background-color 0.3s, color 0.3s, border 0.3s; /* Smooth transitions */
+            transition: color 0.3s, border-color 0.3s; /* Smooth transition for color and border */
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: auto; /* Set width to auto to adjust the button size */
+            margin-top: 10px; /* Reduce the gap between the button and the bottom elements */
         }}
         
         .copy-btn:hover {{
             color: #c93e40; /* Change text color on hover */
-            border: 2px solid #c93e40; /* Change border color on hover */
+            border-color: #c93e40; /* Change border color on hover */
         }}
 
         .copy-btn i {{
