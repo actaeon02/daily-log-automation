@@ -12,8 +12,20 @@ if "classes" not in st.session_state:
 # Class Form
 with st.form("class_form", clear_on_submit=True):
     st.subheader("Add a Class Entry")
-    name = st.text_input("Class Name")
-    time = st.text_input("Day/Time (e.g., Sat 9.15)")
+    # Suggested options
+    class_options = ["Math", "Science", "English", "History", "Physics"]
+    time_options = ["Mon 9.00", "Tue 10.15", "Wed 14.30", "Sat 9.15", "Sun 10.00"]
+    
+    # Let user pick or type Class Name
+    st.markdown("**Pick or type Class Name:**")
+    selected_class = st.selectbox("Suggested Classes", options=[""] + class_options, key="class_select")
+    name = st.text_input("Class Name", value=selected_class if selected_class else "")
+    
+    # Let user pick or type Day/Time
+    st.markdown("**Pick or type Day/Time:**")
+    selected_time = st.selectbox("Suggested Times", options=[""] + time_options, key="time_select")
+    time = st.text_input("Day/Time (e.g., Sat 9.15)", value=selected_time if selected_time else "")
+
     attendance = st.text_input("Attendance (e.g., 9/9)")
     covered = st.text_area("Covered Material")
     extra = st.text_input("Extra Notes (optional)")
