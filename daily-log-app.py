@@ -53,7 +53,7 @@ if st.session_state.classes:
         .copy-btn {{
             background-color: #131720; /* Dark Background */
             color: white; /* White text */
-            padding: 12px 12px; /* Padding */
+            padding: 10px 12px; /* Padding */
             font-size: 15px; /* Font size */
             border: 1px solid #414149; /* Border */
             border-radius: 5px; /* Rounded corners */
