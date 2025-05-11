@@ -18,12 +18,12 @@ with st.form("class_form", clear_on_submit=True):
     
     # Let user pick or type Class Name
     # st.markdown("**Pick or type Class Name:**")
-    name = st.selectbox("Suggested Classes", options=class_options, key="class_select")
+    name = st.selectbox("Class Name", options=class_options, key="class_select")
     # name = st.text_input("Class Name", value=selected_class if selected_class else "")
     
     # Let user pick or type Day/Time
     # st.markdown("**Pick or type Day/Time:**")
-    time = st.selectbox("Suggested Times", options=time_options, key="time_select")
+    time = st.selectbox("Day/Time (e.g., Sat 9.15)", options=time_options, key="time_select")
     # time = st.text_input("Day/Time (e.g., Sat 9.15)", value=selected_time if selected_time else "")
 
     attendance = st.text_input("Attendance (e.g., 9/9)")
