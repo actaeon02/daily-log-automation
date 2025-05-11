@@ -35,8 +35,8 @@ with st.form("class_form", clear_on_submit=True):
 # Display and format message
 if st.session_state.classes:
     st.subheader("📋 Class Log Summary")
-    today = datetime.now().strftime("%a, %d/%m/%Y")
-    message = f"{today}\n"
+    today = datetime.now().strftime("%d/%m/%Y")
+    message = f"Jo, {today}\n"
     for i, c in enumerate(st.session_state.classes, 1):
         line = f"{i}. {c['name']} {c['time']}"
         if c['extra']:
@@ -47,13 +47,13 @@ if st.session_state.classes:
     # Display formatted message
     st.text_area("🟩 Formatted WhatsApp Message", value=message, height=300)
 
-    # Styled HTML & JavaScript for the copy-to-clipboard button
+    # Styled HTML & JavaScript for the copy-to-clipboard button with an icon
     copy_code = f"""
     <style>
         .copy-btn {{
-            background-color: #4CAF50; /* Green background */
+            background-color: #333333; /* Dark Gray background */
             color: white; /* White text */
-            padding: 10px 20px; /* Padding */
+            padding: 12px 20px; /* Padding */
             font-size: 16px; /* Font size */
             border: none; /* No borders */
             border-radius: 5px; /* Rounded corners */
@@ -61,11 +61,17 @@ if st.session_state.classes:
             text-align: center; /* Center text */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
             transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+            display: inline-flex;
+            align-items: center;
         }}
         
         .copy-btn:hover {{
-            background-color: #45a049; /* Darker green on hover */
+            background-color: #444444; /* Darker gray on hover */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }}
+
+        .copy-btn i {{
+            margin-right: 10px; /* Space between icon and text */
         }}
     </style>
     
@@ -80,7 +86,9 @@ if st.session_state.classes:
     }}
     </script>
     
-    <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+    <button class="copy-btn" onclick="copyToClipboard()">
+        <i class="fas fa-copy"></i> Copy to Clipboard
+    </button>
     """
 
     # Render the HTML and JavaScript code using Streamlit's custom component
