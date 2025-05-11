@@ -81,7 +81,7 @@ if st.session_state.classes:
 
         /* Reduce the overall margin/padding of the page content */
         .stButton {{
-            margin-bottom: 0px !important; /* Override default button margin */
+            margin-bottom: 10px !important; /* Override default button margin */
         }}
 
         /* Make sure there's no extra padding in the container of the button */
