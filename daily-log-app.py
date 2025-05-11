@@ -95,9 +95,9 @@ if st.session_state.classes:
     """
 
     # Render the HTML and JavaScript code using Streamlit's custom component
-    components.html(copy_code)
+    components.html(copy_code, height=60)
 
-    st.info("Tap the button above to copy the log to your clipboard.")
+    st.info("Tap the button above to copy the log.")
 
     # Clear all button
     if st.button("♻️ Clear All Classes"):
