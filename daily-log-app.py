@@ -66,7 +66,7 @@ if st.session_state.classes:
             justify-content: center;
             width: auto; /* Set width to auto to adjust the button size */
             margin-top: 10px; /* Reduce the gap between the button and the bottom elements */
-            margin-bottom: 0px; /* Remove bottom margin */
+            margin-bottom: 10px; /* Remove bottom margin */
         }}
         
         .copy-btn:hover {{
