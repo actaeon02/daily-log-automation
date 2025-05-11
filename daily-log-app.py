@@ -5,15 +5,8 @@ import streamlit.components.v1 as components
 # Title
 st.title("📝 Daily Class Log Formatter for WhatsApp")
 
-# Initialize class list in session state
-if "classes" not in st.session_state:
-    st.session_state.classes = []
-
-# Class Form
-with st.form("class_form", clear_on_submit=True):
-    st.subheader("Add a Class Entry")
-    # Class to time options mapping
-    class_time_map = {
+# Class to time options mapping
+class_time_map = {
         "SS2": ["TTh 13.30", "Sat 09.15"],
         "SS3": ["MW 13.30"],
         "SS4": ["MW 15.10", "TTh 16.40"],
@@ -22,16 +15,27 @@ with st.form("class_form", clear_on_submit=True):
         "TB6": ["WF 16.40"]
     }
 
-    class_options = list(class_time_map.keys())
+# Init state
+if "classes" not in st.session_state:
+    st.session_state.classes = []
+if "selected_class" not in st.session_state:
+    st.session_state.selected_class = "SS2"
 
-    # Let user pick class
-    name = st.selectbox("Class Name", options=class_options, key="class_select")
+# Handle class change
+def on_class_change():
+    st.session_state.selected_class = st.session_state.class_name
+    st.experimental_rerun()
 
-    # Filter time options based on selected class
-    filtered_times = class_time_map.get(name, [])
+# Form
+with st.form("class_form", clear_on_submit=True):
+    st.subheader("Add a Class Entry")
 
-    # Let user pick time from filtered list
-    time = st.selectbox("Day/Time", options=filtered_times, key=f"time_select_{name}")
+    st.selectbox("Class Name", options=list(class_time_map.keys()),
+                 key="class_name", index=list(class_time_map.keys()).index(st.session_state.selected_class),
+                 on_change=on_class_change)
+
+    filtered_times = class_time_map.get(st.session_state.selected_class, [])
+    time = st.selectbox("Day/Time", options=filtered_times)
 
     attendance = st.text_input("Attendance (e.g., 9/9)")
     covered = st.text_area("Covered Material")
@@ -39,18 +43,18 @@ with st.form("class_form", clear_on_submit=True):
 
     submitted = st.form_submit_button("➕ Add Class")
     if submitted:
-        if all([name, time, attendance, covered]):
+        if all([st.session_state.class_name, time, attendance, covered]):
             st.session_state.classes.append({
-                "name": name,
+                "name": st.session_state.class_name,
                 "time": time,
                 "attendance": attendance,
                 "covered": covered,
                 "extra": extra
             })
-            st.success(f"✅ Added class: {name}")
+            st.success(f"✅ Added class: {st.session_state.class_name}")
         else:
             st.error("⚠️ Please fill in all required fields.")
-
+                
 # Display and format message
 if st.session_state.classes:
     st.subheader("📋 Class Log Summary")
