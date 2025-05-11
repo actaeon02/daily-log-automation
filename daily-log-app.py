@@ -55,7 +55,7 @@ if st.session_state.classes:
             color: white; /* White text */
             padding: 6px 12px; /* Padding */
             font-size: 16px; /* Font size */
-            border: 2px solid #142c44; /* Border */
+            border: 2px solid #41444c; /* Border */
             border-radius: 5px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor on hover */
             text-align: center; /* Center text */
@@ -66,6 +66,7 @@ if st.session_state.classes:
             justify-content: center;
             width: auto; /* Set width to auto to adjust the button size */
             margin-top: 10px; /* Reduce the gap between the button and the bottom elements */
+            margin-bottom: 0; /* Remove bottom margin */
         }}
         
         .copy-btn:hover {{
@@ -75,7 +76,17 @@ if st.session_state.classes:
 
         .copy-btn i {{
             margin-right: 10px; /* Space between icon and text */
-            font-size: 16px; /* Icon size */
+            font-size: 15px; /* Icon size */
+        }}
+
+        /* Reduce the overall margin/padding of the page content */
+        .stButton {{
+            margin-bottom: 0 !important; /* Override default button margin */
+        }}
+
+        /* Make sure there's no extra padding in the container of the button */
+        .stTextArea {{
+            margin-bottom: 10px !important; /* Reduce the space below the text area */
         }}
     </style>
     
