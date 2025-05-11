@@ -3,7 +3,7 @@ from datetime import datetime
 import streamlit.components.v1 as components
 
 # Title
-st.title("📝 Daily Class Log Formatter for WhatsApp")
+st.title("📝 Daily Class Log Formatter")
 
 # Class to time options mapping
 class_time_map = {
