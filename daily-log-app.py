@@ -51,11 +51,11 @@ if st.session_state.classes:
     copy_code = f"""
     <style>
         .copy-btn {{
-            background-color: #0e1117; /* Dark Background */
+            background-color: #131720; /* Dark Background */
             color: white; /* White text */
-            padding: 12px 20px; /* Padding */
+            padding: 4px 4px; /* Padding */
             font-size: 16px; /* Font size */
-            border: 2px solid transparent; /* Transparent border */
+            border: 2px solid; /* Border */
             border-radius: 5px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor on hover */
             text-align: center; /* Center text */
@@ -67,9 +67,8 @@ if st.session_state.classes:
         }}
         
         .copy-btn:hover {{
-            background-color: #893135; /* Hover background color */
-            color: #0e1117; /* Change text color on hover */
-            border: 2px solid #893135; /* Change border color on hover */
+            color: #c93e40; /* Change text color on hover */
+            border: 2px solid #c93e40; /* Change border color on hover */
         }}
 
         .copy-btn i {{
