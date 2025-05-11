@@ -50,9 +50,10 @@ if st.session_state.classes:
     # Styled HTML & JavaScript for the copy-to-clipboard button with a copyable icon
     copy_code = f"""
     <style>
-        .copy-btn-wrapper {
-            margin-left: -1rem;  /* Aligns with Streamlit native padding */
-        }
+        body {{
+            margin: 0;
+            padding: 0;
+        }}
         .copy-btn {{
             background-color: #131720; /* Dark Background */
             color: white; /* White text */
