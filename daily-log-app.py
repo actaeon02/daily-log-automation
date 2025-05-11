@@ -47,8 +47,28 @@ if st.session_state.classes:
     # Display formatted message
     st.text_area("🟩 Formatted WhatsApp Message", value=message, height=300)
 
-    # JavaScript to copy the message to clipboard
+    # Styled HTML & JavaScript for the copy-to-clipboard button
     copy_code = f"""
+    <style>
+        .copy-btn {{
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            padding: 10px 20px; /* Padding */
+            font-size: 16px; /* Font size */
+            border: none; /* No borders */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            text-align: center; /* Center text */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+        }}
+        
+        .copy-btn:hover {{
+            background-color: #45a049; /* Darker green on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }}
+    </style>
+    
     <script type="text/javascript">
     function copyToClipboard() {{
         var text = `{message}`;
@@ -59,9 +79,10 @@ if st.session_state.classes:
         }});
     }}
     </script>
-    <button onclick="copyToClipboard()">Copy to Clipboard</button>
-    """
     
+    <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+    """
+
     # Render the HTML and JavaScript code using Streamlit's custom component
     components.html(copy_code)
 
