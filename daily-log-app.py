@@ -35,8 +35,8 @@ with st.form("class_form", clear_on_submit=True):
 # Display and format message
 if st.session_state.classes:
     st.subheader("📋 Class Log Summary")
-    today = datetime.now().strftime("%a, %d/%m/%Y")
-    message = f"{today}\n"
+    today = datetime.now().strftime("%d/%m/%Y")
+    message = f"Jo, {today}\n"
     for i, c in enumerate(st.session_state.classes, 1):
         line = f"{i}. {c['name']} {c['time']}"
         if c['extra']:
@@ -99,7 +99,7 @@ if st.session_state.classes:
     """
 
     # Render the HTML and JavaScript code using Streamlit's custom component
-    components.html(copy_code, height=50)
+    components.html(copy_code, height=35)
 
     st.info("Tap the button above to copy the log.")
 
