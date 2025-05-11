@@ -1,5 +1,6 @@
 import streamlit as st
 from datetime import datetime
+import streamlit.components.v1 as components
 
 # Title
 st.title("📝 Daily Class Log Formatter for WhatsApp")
@@ -43,11 +44,30 @@ if st.session_state.classes:
         line += f"\nAttendance: {c['attendance']}\nCovered: {c['covered']}\n\n"
         message += line
 
-    # Display message for copying
+    # Display formatted message
     st.text_area("🟩 Formatted WhatsApp Message", value=message, height=300)
 
-    st.info("To copy, manually select the text above, and use your phone's clipboard functionality.")
+    # JavaScript to copy the message to clipboard
+    copy_code = f"""
+    <script type="text/javascript">
+    function copyToClipboard() {{
+        var text = `{message}`;
+        navigator.clipboard.writeText(text).then(function() {{
+            alert("Message copied to clipboard!");
+        }}, function(err) {{
+            alert("Failed to copy text: ", err);
+        }});
+    }}
+    </script>
+    <button onclick="copyToClipboard()">Copy to Clipboard</button>
+    """
     
+    # Render the HTML and JavaScript code using Streamlit's custom component
+    components.html(copy_code)
+
+    st.info("Tap the button above to copy the log to your clipboard.")
+
+    # Clear all button
     if st.button("♻️ Clear All Classes"):
         st.session_state.classes = []
         st.experimental_rerun()
