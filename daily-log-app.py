@@ -13,18 +13,18 @@ if "classes" not in st.session_state:
 with st.form("class_form", clear_on_submit=True):
     st.subheader("Add a Class Entry")
     # Suggested options
-    class_options = ["Math", "Science", "English", "History", "Physics"]
-    time_options = ["Mon 9.00", "Tue 10.15", "Wed 14.30", "Sat 9.15", "Sun 10.00"]
+    class_options = ["SS2", "SS3", "SS4", "HFD", "TB1", "TB6"]
+    time_options = ["MW 13.30", "MW 15.10", "MW 16.40", "TTh 13.30", "TTh 15.10", "TTh 16.40", "TTh 18.30", "WF 16.40", "Sat 09.15"]
     
     # Let user pick or type Class Name
-    st.markdown("**Pick or type Class Name:**")
-    selected_class = st.selectbox("Suggested Classes", options=[""] + class_options, key="class_select")
-    name = st.text_input("Class Name", value=selected_class if selected_class else "")
+    # st.markdown("**Pick or type Class Name:**")
+    name = st.selectbox("Suggested Classes", options=class_options, key="class_select")
+    # name = st.text_input("Class Name", value=selected_class if selected_class else "")
     
     # Let user pick or type Day/Time
-    st.markdown("**Pick or type Day/Time:**")
-    selected_time = st.selectbox("Suggested Times", options=[""] + time_options, key="time_select")
-    time = st.text_input("Day/Time (e.g., Sat 9.15)", value=selected_time if selected_time else "")
+    # st.markdown("**Pick or type Day/Time:**")
+    time = st.selectbox("Suggested Times", options=time_options, key="time_select")
+    # time = st.text_input("Day/Time (e.g., Sat 9.15)", value=selected_time if selected_time else "")
 
     attendance = st.text_input("Attendance (e.g., 9/9)")
     covered = st.text_area("Covered Material")
