@@ -53,8 +53,8 @@ if st.session_state.classes:
         .copy-btn {{
             background-color: #131720; /* Dark Background */
             color: white; /* White text */
-            padding: 6px 6px; /* Padding */
-            font-size: 16px; /* Font size */
+            padding: 6px 12px; /* Padding */
+            font-size: 15px; /* Font size */
             border: 1px solid #414149; /* Border */
             border-radius: 5px; /* Rounded corners */
             cursor: pointer; /* Pointer cursor on hover */
@@ -65,8 +65,6 @@ if st.session_state.classes:
             align-items: center;
             justify-content: center;
             width: auto; /* Set width to auto to adjust the button size */
-            margin-top: 10px; /* Reduce the gap between the button and the bottom elements */
-            margin-bottom: 10px; /* Remove bottom margin */
         }}
         
         .copy-btn:hover {{
