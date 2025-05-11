@@ -1,9 +1,8 @@
 import streamlit as st
 from datetime import datetime
-import pyperclip
 
 # Title
-st.title("📝 Daily Class Log Formatter")
+st.title("📝 Daily Class Log Formatter for WhatsApp")
 
 # Initialize class list in session state
 if "classes" not in st.session_state:
@@ -35,8 +34,8 @@ with st.form("class_form", clear_on_submit=True):
 # Display and format message
 if st.session_state.classes:
     st.subheader("📋 Class Log Summary")
-    today = datetime.now().strftime("%d/%m/%Y")
-    message = f"Jo, {today}\n"
+    today = datetime.now().strftime("%a, %d/%m/%Y")
+    message = f"{today}\n"
     for i, c in enumerate(st.session_state.classes, 1):
         line = f"{i}. {c['name']} {c['time']}"
         if c['extra']:
@@ -44,12 +43,11 @@ if st.session_state.classes:
         line += f"\nAttendance: {c['attendance']}\nCovered: {c['covered']}\n\n"
         message += line
 
+    # Display message for copying
     st.text_area("🟩 Formatted WhatsApp Message", value=message, height=300)
 
-    if st.button("📋 Copy to Clipboard"):
-        pyperclip.copy(message)
-        st.success("✅ Copied to clipboard!")
-
+    st.info("To copy, manually select the text above, and use your phone's clipboard functionality.")
+    
     if st.button("♻️ Clear All Classes"):
         st.session_state.classes = []
         st.experimental_rerun()
